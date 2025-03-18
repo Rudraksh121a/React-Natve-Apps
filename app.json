@@ -1,6 +1,10 @@
 {
   "expo": {
     "name": "React-Natve-Apps",
+
+    
+    "scheme": "React-Natve-Apps",
+
     "slug": "React-Natve-Apps",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,10 +26,12 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      "expo-router"
     ]
   }
 }
