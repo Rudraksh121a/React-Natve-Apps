@@ -1,9 +1,40 @@
 import { StatusBar } from "expo-status-bar";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import DayListItem from "./src/components/Core/DayListItem";
+import { Inter_900Black, useFonts } from "@expo-google-fonts/inter";
+import { AmaticSC_400Regular,AmaticSC_700Bold } from "@expo-google-fonts/amatic-sc";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+
+const days = Array.from({ length: 24 }, (_, i) => i + 1);
+
+// Keep the splash screen visible while we fetch resources
+// SplashScreen.preventAutoHideAsync();
+
+// Set the animation options. This is optional.
 
 export default function App() {
-  const days = Array.from({ length: 24 }, (_, i) => i + 1);
+  const [fontloaded, fonterror] = useFonts({
+    Inter: Inter_900Black,
+    Amatic:AmaticSC_400Regular,
+    AmaticBold:AmaticSC_700Bold,
+  });
+
+  useEffect(() => {
+    if (fontloaded || fonterror) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontloaded, fonterror]);
+
+  if (!fontloaded && !fonterror) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -12,9 +43,7 @@ export default function App() {
         numColumns={2}
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
-        renderItem={({ item }) => (
-          <DayListItem number={item}/>
-        )}
+        renderItem={({ item }) => <DayListItem number={item} />}
         showsVerticalScrollIndicator={false}
       />
 
@@ -30,11 +59,11 @@ const styles = StyleSheet.create({
 
     gap: 10,
   },
-  content: { gap: 10,padding:10},
+  content: { gap: 10, padding: 10 },
   box: {
     backgroundColor: "#F9EDE3",
     flex: 1,
-    aspectRatio: 1 ,
+    aspectRatio: 1,
 
     justifyContent: "center",
     alignItems: "center",
@@ -45,5 +74,5 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   text: { fontSize: 70, color: "#9B4521" },
-  column:{gap:10},
+  column: { gap: 10 },
 });

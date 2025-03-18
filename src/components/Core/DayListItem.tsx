@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-type DayListItem={
-    number:number;
-}
+type DayListItem = {
+  number: number;
+};
 
-const DayListItem = (props:DayListItem) => {
+const DayListItem = (props: DayListItem) => {
   return (
     <View style={styles.box}>
       <Text style={styles.text}>{props.number}</Text>
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F9EDE3",
     flex: 1,
     aspectRatio: 1,
- 
+
     justifyContent: "center",
     alignItems: "center",
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     gap: 10,
     borderRadius: 20,
   },
-  text: { fontSize: 70, color: "#9B4521" },
+  text: { fontSize: 70, color: "#9B4521", fontFamily: "AmaticBold" },
 });
 
 export default DayListItem;
