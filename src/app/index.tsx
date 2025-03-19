@@ -1,16 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  ActivityIndicator,
+ 
   FlatList,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import DayListItem from "./src/components/Core/DayListItem";
-import { Inter_900Black, useFonts } from "@expo-google-fonts/inter";
-import { AmaticSC_400Regular,AmaticSC_700Bold } from "@expo-google-fonts/amatic-sc";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import DayListItem from "@components/Core/DayListItem"
+
 
 const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
@@ -19,22 +16,8 @@ const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
 // Set the animation options. This is optional.
 
-export default function App() {
-  const [fontloaded, fonterror] = useFonts({
-    Inter: Inter_900Black,
-    Amatic:AmaticSC_400Regular,
-    AmaticBold:AmaticSC_700Bold,
-  });
-
-  useEffect(() => {
-    if (fontloaded || fonterror) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontloaded, fonterror]);
-
-  if (!fontloaded && !fonterror) {
-    return null;
-  }
+export default function HomeScreen() {
+  
 
   return (
     <View style={styles.container}>
@@ -43,7 +26,7 @@ export default function App() {
         numColumns={2}
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
-        renderItem={({ item }) => <DayListItem number={item} />}
+        renderItem={({ item }) => <DayListItem day={item} />}
         showsVerticalScrollIndicator={false}
       />
 
