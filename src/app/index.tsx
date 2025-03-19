@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  ActivityIndicator,
+ 
   FlatList,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import DayListItem from "../components/Core/DayListItem";
+import DayListItem from "@components/Core/DayListItem"
 
 
 const days = Array.from({ length: 24 }, (_, i) => i + 1);
